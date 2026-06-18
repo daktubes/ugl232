@@ -1,0 +1,195 @@
+name: Run xray-checker
+
+on:
+  workflow_dispatch:
+    inputs:
+      args:
+        description: "Arguments for xray-checker"
+        required: true
+        default: "--help"
+  schedule:
+    - cron: "*/45 * * * *"
+
+permissions:
+  contents: write
+
+jobs:
+  run-xray-checker:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Get latest release info
+        id: latest-release
+        run: |
+          set -euo pipefail
+          LATEST_URL=$(curl -fsSL https://api.github.com/repos/kutovoys/xray-checker/releases/latest | grep "browser_download_url.*linux-amd64.tar.gz" | cut -d '"' -f 4)
+          echo "download_url=$LATEST_URL" >> "$GITHUB_OUTPUT"
+          echo "archive_name=$(basename "$LATEST_URL")" >> "$GITHUB_OUTPUT"
+
+      - name: Create work directory
+        run: mkdir -p xray-checker checked
+
+      - name: Download release archive
+        working-directory: xray-checker
+        run: |
+          set -euo pipefail
+          wget -q "${{ steps.latest-release.outputs.download_url }}"
+          tar xzf "${{ steps.latest-release.outputs.archive_name }}"
+          chmod +x xray-checker
+
+      - name: Run xray-checker
+        working-directory: xray-checker
+        env:
+          INSTANCE: ${{ secrets.INSTANCE || 'github-actions' }}
+        run: |
+          set -euo pipefail
+          ./xray-checker \
+            --subscription-url=https://raw.githubusercontent.com/RKPchannel/RKP_bypass_configs/refs/heads/main/blacklist.txt \
+            --subscription-url=https://mifa.world/vless \
+            --subscription-url=https://raw.githack.com/igareck/vpn-configs-for-russia/main/BLACK_VLESS_RUS.txt \
+            --subscription-url=https://wlrus.lol/confs/blackl.txt \
+            --subscription-url=https://vpn.zotus.ru/sub.php \
+            --metrics-push-url=http://2.26.97.21:9091/metrics/job/github-actions \
+            --metrics-instance=github-actions \
+            --proxy-check-method=status \
+            --run-once
+
+      - name: Build working keys
+        run: |
+          set -euo pipefail
+
+          curl -fsSL "http://2.26.97.21:9091/metrics" > metrics.txt
+          curl -fsSL "https://subrostunnel.vercel.app/obsh.txt" | base64 -d > all_keys.txt
+
+          python3 - <<'PY'
+          import pathlib, re, json, urllib.parse, urllib.request
+          from urllib.parse import unquote
+
+          metrics = pathlib.Path("metrics.txt").read_text(encoding="utf-8", errors="ignore").splitlines()
+          keys = pathlib.Path("all_keys.txt").read_text(encoding="utf-8", errors="ignore").splitlines()
+
+          def flag_from_ip(ip):
+              try:
+                  with urllib.request.urlopen(f"http://ip-api.com/json/{ip}", timeout=8) as r:
+                      data = json.loads(r.read().decode("utf-8", "ignore"))
+                  if data.get("countryCode"):
+                      code = data["countryCode"].upper()
+                      if len(code) == 2:
+                          return chr(127397 + ord(code[0])) + chr(127397 + ord(code[1]))
+              except Exception:
+                  pass
+              return "🇪🇺"
+
+          def ip_from_address(addr):
+              if not addr:
+                  return ""
+              if addr.startswith("[") and "]" in addr:
+                  return addr[1:addr.index("]")]
+              return addr.split(":")[0]
+
+          def extract_flag_from_original(raw_text):
+              """Улучшенное распознавание флага из оригинального комментария"""
+              if not raw_text:
+                  return None
+              
+              # Сначала ищем Unicode флаги (последовательность из 2 региональных индикаторов)
+              flag_match = re.search(r'([\U0001F1E6-\U0001F1FF][\U0001F1E6-\U0001F1FF])', raw_text)
+              if flag_match:
+                  return flag_match.group(1)
+              
+              # Ищем URL-encoded флаги (например %F0%9F%87%AB%F0%9F%87%AE)
+              encoded_flags = re.findall(r'%F0%9F%87[AB-E][AB-E]', raw_text)
+              if len(encoded_flags) >= 2:
+                  # Декодируем первые два подряд идущих флага
+                  try:
+                      flag1 = bytes.fromhex(encoded_flags[0][2:]).decode('utf-8', errors='ignore')
+                      flag2 = bytes.fromhex(encoded_flags[1][2:]).decode('utf-8', errors='ignore')
+                      return flag1 + flag2
+                  except:
+                      pass
+              
+              return None
+
+          items = []
+          names = []
+
+          for line in metrics:
+              if "xray_proxy_status" not in line:
+                  continue
+              if not line.strip().endswith(" 1"):
+                  continue
+
+              name_m = re.search(r'name="([^"]+)"', line)
+              addr_m = re.search(r'address="([^"]+)"', line)
+              if not name_m or not addr_m:
+                  continue
+
+              name = name_m.group(1)
+              addr = addr_m.group(1)
+              ip = ip_from_address(addr)
+              geo_flag = flag_from_ip(ip)
+
+              items.append({
+                  "name": name,
+                  "geo_flag": geo_flag
+              })
+              names.append(name)
+
+          matched = []
+          seen = set()
+
+          for name in names:
+              q = urllib.parse.quote(name, safe="")
+              for k in keys:
+                  if q in k and k not in seen:
+                      matched.append(k)
+                      seen.add(k)
+                      break
+
+          working_vless = []
+          for i, vless in enumerate(matched, 1):
+              # Извлекаем базовую часть VLESS
+              base = vless.split("#", 1)[0] if "#" in vless else vless
+              
+              # Пытаемся извлечь флаг из оригинального комментария (и name из метрик)
+              orig_comment = vless.split("#", 1)[1] if "#" in vless else ""
+              orig_flag = extract_flag_from_original(orig_comment) or extract_flag_from_original(items[i-1]["name"])
+              
+              # Логика выбора флага: оригинал -> geo API -> 🇷🇺
+              final_flag = orig_flag or items[i-1]["geo_flag"]
+              
+              comment = f"{final_flag} Wi-Fi {i} | тгк: @rostunnel"
+              encoded_comment = urllib.parse.quote(comment, safe="@")
+              working_vless.append(f"{base}#{encoded_comment}")
+
+          pathlib.Path("checked/working_vless.txt").write_text(
+              "\n".join(working_vless) + ("\n" if working_vless else ""),
+              encoding="utf-8"
+          )
+
+          pathlib.Path("checked/working_vless_top10.txt").write_text(
+              "\n".join(working_vless[:10]) + ("\n" if working_vless[:10] else ""),
+              encoding="utf-8"
+          )
+
+          pathlib.Path("checked/working_vless_top100.txt").write_text(
+              "\n".join(working_vless[:100]) + ("\n" if working_vless[:100] else ""),
+              encoding="utf-8"
+          )
+
+          pathlib.Path("checked/working_vless_top300.txt").write_text(
+              "\n".join(working_vless[:300]) + ("\n" if working_vless[:300] else ""),
+              encoding="utf-8"
+          )
+          PY
+
+      - name: Commit Results
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "🤖 Auto-update [${{ github.run_id }}]"
+          file_pattern: "checked/*"
