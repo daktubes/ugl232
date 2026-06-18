@@ -49,7 +49,7 @@ jobs:
         run: |
           set -euo pipefail
           ./xray-checker \
-            --subscription-url=https://raw.githubusercontent.com/RKPchannel/RKP_bypass_configs/refs/heads/main/blacklist.txt \
+            --subscription-url=https://etoneya.su/other \
             --subscription-url=https://mifa.world/vless \
             --subscription-url=https://raw.githack.com/igareck/vpn-configs-for-russia/main/BLACK_VLESS_RUS.txt \
             --subscription-url=https://wlrus.lol/confs/blackl.txt \
