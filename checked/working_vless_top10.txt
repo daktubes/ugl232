@@ -1,0 +1,10 @@
+vless://65498631-4e25-49ce-8789-b57547d8c261@103.118.255.19:44058?type=tcp&security=none&encryption=none&descriptions=СвободуИнтернету719#%F0%9F%87%AD%F0%9F%87%B0%20Wi-Fi%201%20%7C%20%D1%82%D0%B3%D0%BA%3A%20@rostunnel
+vless://65498631-4e25-49ce-8789-b57547d8c261@103.118.255.19:44058?type=tcp&security=none&encryption=none&freeinternet=kizyak_vpn178175885851#%F0%9F%87%AD%F0%9F%87%B0%20Wi-Fi%202%20%7C%20%D1%82%D0%B3%D0%BA%3A%20@rostunnel
+vless://65498631-4e25-49ce-8789-b57547d8c261@103.118.255.19:44058?type=tcp&security=none&encryption=none&__rand=b390fd55#%F0%9F%87%AD%F0%9F%87%B0%20Wi-Fi%203%20%7C%20%D1%82%D0%B3%D0%BA%3A%20@rostunnel
+vless://65498631-4e25-49ce-8789-b57547d8c261@103.118.255.19:44058?type=tcp&security=none&encryption=none&descriptions=люби_себяbd7d12#%F0%9F%87%AD%F0%9F%87%B0%20Wi-Fi%204%20%7C%20%D1%82%D0%B3%D0%BA%3A%20@rostunnel
+vless://65498631-4e25-49ce-8789-b57547d8c261@103.118.255.19:44058?type=tcp&security=none&encryption=none#%F0%9F%87%AD%F0%9F%87%B0%20Wi-Fi%205%20%7C%20%D1%82%D0%B3%D0%BA%3A%20@rostunnel
+vless://65498631-4e25-49ce-8789-b57547d8c261@103.118.255.19:44058?type=tcp&security=none&encryption=none&freeinternet=kizyak_vpn1781718353843#%F0%9F%87%AD%F0%9F%87%B0%20Wi-Fi%206%20%7C%20%D1%82%D0%B3%D0%BA%3A%20@rostunnel
+vless://65498631-4e25-49ce-8789-b57547d8c261@103.118.255.19:44058?type=tcp&security=none&encryption=none&_t=437af4ad#%F0%9F%87%AD%F0%9F%87%B0%20Wi-Fi%207%20%7C%20%D1%82%D0%B3%D0%BA%3A%20@rostunnel
+vless://65498631-4e25-49ce-8789-b57547d8c261@103.118.255.19:44058?type=tcp&security=none&encryption=none&fp=firefox#%F0%9F%87%AD%F0%9F%87%B0%20Wi-Fi%208%20%7C%20%D1%82%D0%B3%D0%BA%3A%20@rostunnel
+vless://65498631-4e25-49ce-8789-b57547d8c261@103.118.255.19:44058?type=tcp&security=none&encryption=none&descriptions=люби_себя9d8fe0#%F0%9F%87%AD%F0%9F%87%B0%20Wi-Fi%209%20%7C%20%D1%82%D0%B3%D0%BA%3A%20@rostunnel
+vless://65498631-4e25-49ce-8789-b57547d8c261@103.118.255.19:44058?type=tcp&security=none&encryption=none&burmalda=ba81ae6d#%F0%9F%87%AD%F0%9F%87%B0%20Wi-Fi%2010%20%7C%20%D1%82%D0%B3%D0%BA%3A%20@rostunnel
