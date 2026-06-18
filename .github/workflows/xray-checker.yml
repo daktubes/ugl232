@@ -49,10 +49,10 @@ jobs:
         run: |
           set -euo pipefail
           ./xray-checker \
+            --subscription-url=https://vpn.zotus.ru/sub.php \
             --subscription-url=https://mifa.world/vless \
             --subscription-url=https://raw.githack.com/igareck/vpn-configs-for-russia/main/BLACK_VLESS_RUS.txt \
             --subscription-url=https://wlrus.lol/confs/blackl.txt \
-            --subscription-url=https://vpn.zotus.ru/sub.php \
             --metrics-push-url=http://2.26.97.21:9091/metrics/job/github-actions \
             --metrics-instance=github-actions \
             --proxy-check-method=status \
