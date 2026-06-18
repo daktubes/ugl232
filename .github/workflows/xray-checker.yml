@@ -171,8 +171,8 @@ jobs:
               encoding="utf-8"
           )
 
-          pathlib.Path("checked/working_vless_top10.txt").write_text(
-              "\n".join(working_vless[:10]) + ("\n" if working_vless[:10] else ""),
+          pathlib.Path("checked/working_vless_top20.txt").write_text(
+              "\n".join(working_vless[:20]) + ("\n" if working_vless[:20] else ""),
               encoding="utf-8"
           )
 
