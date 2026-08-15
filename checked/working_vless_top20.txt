@@ -12,9 +12,9 @@ hysteria2://fb610a2d-f571-4512-9fb8-0458d3823233@tn.tmn141246.ru:443?sni=live.ok
 hysteria2://0effc8cd-9db5-4de2-b9c6-75e3f3745948@tn.tmn141246.ru:443?sni=live.ok.ru&amp;insecure=1#%F0%9F%87%A8%F0%9F%87%A6%20Wi-Fi%2012%20%7C%20%D1%82%D0%B3%D0%BA%3A%20@rostunnel
 hysteria2://d01d1404-dc2c-46d4-88b8-5b010cfd189f@tn.tmn141246.ru:443?sni=live.ok.ru&amp;insecure=1#%F0%9F%87%A8%F0%9F%87%A6%20Wi-Fi%2013%20%7C%20%D1%82%D0%B3%D0%BA%3A%20@rostunnel
 hysteria2://c1e82b47-c41a-441b-b04a-4f5fbfc1b363@tn.tmn141246.ru:443?sni=live.ok.ru&amp;insecure=1#%F0%9F%87%A8%F0%9F%87%A6%20Wi-Fi%2014%20%7C%20%D1%82%D0%B3%D0%BA%3A%20@rostunnel
-hysteria2://3c9b05c0-e453-4c9d-aa76-ff7a3c4b1ec7@tn.tmn141246.ru:443?sni=live.ok.ru&amp;insecure=1#%F0%9F%87%A8%F0%9F%87%A6%20Wi-Fi%2015%20%7C%20%D1%82%D0%B3%D0%BA%3A%20@rostunnel
-hy2://vpn-hy2-lv-2026@185.236.22.119:8444#%F0%9F%87%B1%F0%9F%87%BB%20Wi-Fi%2016%20%7C%20%D1%82%D0%B3%D0%BA%3A%20@rostunnel
-hysteria2://vpn-hy2-lv-2026@185.236.22.119:8444?insecure=1&sni=185.236.22.119#%F0%9F%87%B1%F0%9F%87%BB%20Wi-Fi%2017%20%7C%20%D1%82%D0%B3%D0%BA%3A%20@rostunnel
-hysteria2://vpn-hy2-lv-2026@185.236.22.119:8444?sni=185.236.22.119\u0026insecure=1\u0026allowInsecure=1#%F0%9F%87%B1%F0%9F%87%BB%20Wi-Fi%2018%20%7C%20%D1%82%D0%B3%D0%BA%3A%20@rostunnel
-hysteria2://latvia_hysteria2_fastlane_5uliseooz%3ANEqSKWQRNeuXj3C99tHjwjNWc2v4BovZ@62.60.234.60:1935?sni=lv1.h.fastlanehosting.ru#%F0%9F%87%B1%F0%9F%87%BB%20Wi-Fi%2019%20%7C%20%D1%82%D0%B3%D0%BA%3A%20@rostunnel
-hysteria2://b8f1b61e-d5c4-4765-866d-ece1fc8e590b@104.165.205.49:9443?sni=onecloudstream.com#%F0%9F%87%B1%F0%9F%87%BB%20Wi-Fi%2020%20%7C%20%D1%82%D0%B3%D0%BA%3A%20@rostunnel
+hy2://vpn-hy2-lv-2026@185.236.22.119:8444#%F0%9F%87%B1%F0%9F%87%BB%20Wi-Fi%2015%20%7C%20%D1%82%D0%B3%D0%BA%3A%20@rostunnel
+hysteria2://vpn-hy2-lv-2026@185.236.22.119:8444?insecure=1&sni=185.236.22.119#%F0%9F%87%B1%F0%9F%87%BB%20Wi-Fi%2016%20%7C%20%D1%82%D0%B3%D0%BA%3A%20@rostunnel
+hysteria2://vpn-hy2-lv-2026@185.236.22.119:8444?sni=185.236.22.119\u0026insecure=1\u0026allowInsecure=1#%F0%9F%87%B1%F0%9F%87%BB%20Wi-Fi%2017%20%7C%20%D1%82%D0%B3%D0%BA%3A%20@rostunnel
+hysteria2://latvia_hysteria2_fastlane_5uliseooz%3ANEqSKWQRNeuXj3C99tHjwjNWc2v4BovZ@62.60.234.60:1935?sni=lv1.h.fastlanehosting.ru#%F0%9F%87%B1%F0%9F%87%BB%20Wi-Fi%2018%20%7C%20%D1%82%D0%B3%D0%BA%3A%20@rostunnel
+hysteria2://b8f1b61e-d5c4-4765-866d-ece1fc8e590b@104.165.205.49:9443?sni=onecloudstream.com#%F0%9F%87%B1%F0%9F%87%BB%20Wi-Fi%2019%20%7C%20%D1%82%D0%B3%D0%BA%3A%20@rostunnel
+hysteria2://b8f1b61e-d5c4-4765-866d-ece1fc8e590b@104.165.205.21:9443?sni=onecloudstream.com#%F0%9F%87%B1%F0%9F%87%BB%20Wi-Fi%2020%20%7C%20%D1%82%D0%B3%D0%BA%3A%20@rostunnel
