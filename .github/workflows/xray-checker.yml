@@ -54,6 +54,7 @@ jobs:
             --subscription-url=https://raw.githack.com/igareck/vpn-configs-for-russia/main/BLACK_VLESS_RUS.txt \
             --subscription-url=https://raw.githubusercontent.com/RKPchannel/RKP_bypass_configs/refs/heads/main/blacklist.txt \
             --subscription-url=https://wlrus.lol/confs/blackl.txt \
+            --subscription-url=https://hub.mos.ru/kfwl/auto/raw/main/bl \
             --metrics-push-url=http://150.241.94.0:9092/metrics/job/github-actions \
             --metrics-instance=github-actions \
             --proxy-check-method=status \
